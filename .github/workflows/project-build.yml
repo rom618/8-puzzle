@@ -1,4 +1,4 @@
-name: Compilation avec CMake et GCC
+name: Compilation with CMake et GCC
 
 on:
   pull_request:
