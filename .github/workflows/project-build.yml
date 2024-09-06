@@ -1,40 +1,38 @@
-name: Compilation with CMake et GCC
+name: Compilation with CMake and GCC
 
 on:
-  pull_request:
-    branches:
-      - main
+  push: null
 
 jobs:
   build-cmake:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Fetch repository
-      uses: actions/checkout@main
+      - name: Fetch repository
+        uses: actions/checkout@main
 
-    - name: Configure CMake
-      uses: jwlawson/actions-setup-cmake@v1.14.1
-      with:
-        cmake-version: 'latest'
+      - name: Configure CMake
+        uses: jwlawson/actions-setup-cmake@v1.14.1
+        with:
+          cmake-version: "latest"
 
-    - name: Compile project with CMake
-      run: |
-        mkdir build
-        cd build
-        cmake ..
-        make
+      - name: Compile project with CMake
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
 
-  build-gcc-part1:
+  build-gcc:
     runs-on: ubuntu-latest
     needs: build-cmake
 
     steps:
-    - name: Fetch repository
-      uses: actions/checkout@main
+      - name: Fetch repository
+        uses: actions/checkout@main
 
-    - name: Install GCC
-      run: sudo apt-get update && sudo apt-get install -y gcc
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y gcc
 
-    - name: Compile project with GCC
-      run: gcc -o 8_puzzle *.c
+      - name: Compile project with GCC
+        run: gcc -o 8_puzzle ./*.c

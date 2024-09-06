@@ -3,11 +3,8 @@
 # Delete existing binary file
 rm -f 8_puzzle
 
-# Compile C file
-gcc -o 8_puzzle *.c
-
-# Verify compilation success
-if [ $? -eq 0 ]; then
+# Compile C file and verify compilation success
+if gcc -o 8_puzzle ./*.c; then
     echo "Compilation OK. Executing 8_puzzle."
 
     # Execute program

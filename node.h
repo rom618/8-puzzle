@@ -1,5 +1,5 @@
-#ifndef NODE_H
-#define NODE_H
+#ifndef NODE_H_
+#define NODE_H_
 
 #include "direction.h"
 
@@ -16,4 +16,4 @@ void legal_moves(node *n);
 void action(node *n, const char *direction);
 void expand(node *n);
 
-#endif  // NODE_H
+#endif  // NODE_H_
