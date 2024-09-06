@@ -1,0 +1,3 @@
+# Ignore the compiled files
+8_puzzle
+*.exe
