@@ -1,5 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
+#include "random_sequence.h"
 
 // Define the node structure
 typedef struct node {
@@ -44,6 +48,8 @@ void expand(node *n) {
 }
 
 int main() {
+    srand(time(NULL));  // Seed the random number generator
+
     int goal_state[3][3] = {{1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
 
     // Example of initializing a node
@@ -58,6 +64,8 @@ int main() {
             printf("Move %d: %s\n", i, root.moves[i]);
         }
     }
+
+    random_number_sequence(9);  // Random number sequence usage example
 
     return 0;
 }
