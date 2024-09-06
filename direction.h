@@ -1,5 +1,5 @@
-#ifndef DIRECTION_H
-#define DIRECTION_H
+#ifndef DIRECTION_H_
+#define DIRECTION_H_
 
 // Define the directions for the puzzle
 typedef enum {
@@ -13,4 +13,4 @@ typedef enum {
 // Function prototypes
 const char *direction_to_string(Direction dir);
 
-#endif  // DIRECTION_H
+#endif  // DIRECTION_H_
