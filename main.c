@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
     }
 
     int sequence_size = 9;
-    int *array = (int *)malloc(sequence_size * sizeof(int));
+    int *array = malloc(sequence_size * sizeof(int));
 
     random_number_sequence(array, sequence_size);  // Usage example
 
