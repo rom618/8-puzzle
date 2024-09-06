@@ -7,7 +7,8 @@
 #include "random_sequence.h"
 
 int locate_blank_index(const int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]);
-void list_to_puzzle(const int *shuffled_list, int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]);
+void list_to_puzzle(const int *shuffled_list,
+                    int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]);
 
 int main(int argc, char *argv[]) {
     // - * - * - * - * - * -* - * - * - * - * -* - * - * - * - * -* - * - * - *
@@ -73,7 +74,8 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void list_to_puzzle(const int *shuffled_list, int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]) {
+void list_to_puzzle(const int *shuffled_list,
+                    int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]) {
     for (int i = 0; i < PUZZLE_SIZE; i++) {
         for (int j = 0; j < PUZZLE_SIZE; j++) {
             puzzle[i][j] = shuffled_list[i * PUZZLE_SIZE + j];
