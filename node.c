@@ -1,3 +1,4 @@
+// Copyright [2024] <Roms & Vianpyro>
 #include "node.h"
 
 // Function to determine legal moves based on the position of the blank tile

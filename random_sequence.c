@@ -1,3 +1,4 @@
+// Copyright [2024] <Roms & Vianpyro>
 #include "random_sequence.h"
 
 #include <stdio.h>
