@@ -6,10 +6,6 @@
 #include "node.h"
 #include "random_sequence.h"
 
-// Define constants for the puzzle dimensions
-#define PUZZLE_SIZE 3
-#define PUZZLE_DIMENSION (PUZZLE_SIZE * PUZZLE_SIZE)
-
 int locate_blank_index(const int puzzle[3][3]);
 
 int main(int argc, char *argv[]) {
