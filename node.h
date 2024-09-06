@@ -12,7 +12,7 @@
 // Define the node structure
 typedef struct node {
     // 2D array to represent the puzzle state
-    const int state[PUZZLE_SIZE][PUZZLE_SIZE];
+    int state[PUZZLE_SIZE][PUZZLE_SIZE];
     int blank_index;      // Index of the blank (zero) tile
     Direction moves[4];   // Array to store possible moves
     struct node *parent;  // Pointer to the parent node
