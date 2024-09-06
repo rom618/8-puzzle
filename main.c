@@ -3,29 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+#include "node.h"
 #include "random_sequence.h"
-
-// Define the directions for the puzzle
-typedef enum {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    NONE  // Used to indicate no move
-} Direction;
-
-typedef struct node {
-    int state[3][3];      // 2D array to represent the puzzle state
-    int blank_index;      // Index of the blank (zero) tile
-    Direction moves[4];   // Array to store possible moves
-    struct node *parent;  // Pointer to the parent node
-} node;
-
-// Function prototypes
-void legal_moves(node *n);
-void action(node *n, const char *direction);
-void expand(node *n);
-const char *direction_to_string(Direction dir);
 
 int main() {
     srand(time(NULL));  // Seed the random number generator
@@ -59,51 +38,4 @@ int main() {
     free(array);  // Free allocated memory
 
     return 0;
-}
-
-// Function to determine legal moves based on the position of the blank tile
-void legal_moves(node *n) {
-    // Initialize moves to NONE
-    for (int i = 0; i < 4; i++) {
-        n->moves[i] = NONE;
-    }
-
-    // Determine legal moves
-    if (n->blank_index > 2) {  // If blank is not in the top row, "up" is a valid move
-        n->moves[0] = UP;
-    }
-    if (n->blank_index < 6) {  // If blank is not in the bottom row, "down" is a valid move
-        n->moves[1] = DOWN;
-    }
-    if (n->blank_index % 3 < 2) {  // If blank is not in the rightmost column, "right" is a valid move
-        n->moves[2] = RIGHT;
-    }
-    if (n->blank_index % 3 > 0) {  // If blank is not in the leftmost column, "left" is a valid move
-        n->moves[3] = LEFT;
-    }
-}
-
-// Function to perform an action based on the direction
-void action(node *n, const char *direction) {
-    // Implement the action function here
-}
-
-// Function to expand the node to generate its children
-void expand(node *n) {
-    // Implement the expand function here
-}
-
-const char *direction_to_string(Direction dir) {
-    switch (dir) {
-        case UP:
-            return "up";
-        case DOWN:
-            return "down";
-        case LEFT:
-            return "left";
-        case RIGHT:
-            return "right";
-        default:
-            return "";
-    }
 }
