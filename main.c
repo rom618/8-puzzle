@@ -45,12 +45,16 @@ int main(int argc, char *argv[]) {
 
     // Generate a random puzzle
     int *shuffled_puzzle = malloc(PUZZLE_DIMENSION * sizeof(int));
-    int initial_puzzle[PUZZLE_SIZE][PUZZLE_SIZE];
     random_number_sequence(shuffled_puzzle, PUZZLE_DIMENSION);
-    list_to_puzzle(shuffled_puzzle, initial_puzzle);
-    free(shuffled_puzzle);  // Free allocated memory
 
-    // Example of initializing a node
+    // Convert the list to a 2D array
+    int initial_puzzle[PUZZLE_SIZE][PUZZLE_SIZE];
+    list_to_puzzle(shuffled_puzzle, initial_puzzle);
+
+    // Free the allocated memory for the shuffled puzzle
+    free(shuffled_puzzle);
+
+    // Initialize root node
     int blank_index = locate_blank_index(initial_puzzle);
     node root = {{{0}}, blank_index, {}, NULL};
     memcpy(root.state, initial_puzzle, sizeof(initial_puzzle));
