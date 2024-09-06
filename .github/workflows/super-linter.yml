@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CLANG_CONFIG_FILE: .github/linters/cpp/.clang-format.yml
           CPP_CONFIG_FILE: .github/linters/cpp/.cpp-format.yml
-          VALIDATE_ALL_CODEBASE: false
+          # VALIDATE_ALL_CODEBASE: false
           VALIDATE_CHECKOV: false
           VALIDATE_SHELL_SHFMT: false
           VALIDATE_YAML: false
