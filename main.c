@@ -6,6 +6,8 @@
 #include "node.h"
 #include "random_sequence.h"
 
+#define PUZZLE_SIZE 9
+
 int main(int argc, char *argv[]) {
     srand(time(NULL));  // Seed the random number generator
 
@@ -46,18 +48,17 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    int sequence_size = 9;
-    int *array = malloc(sequence_size * sizeof(int));
+    int *shuffled_puzzle = malloc(PUZZLE_SIZE * sizeof(int));
 
-    random_number_sequence(array, sequence_size);  // Usage example
+    random_number_sequence(shuffled_puzzle, PUZZLE_SIZE);  // Usage example
 
-    // Print the shuffled array
-    for (int i = 0; i < sequence_size; i++) {
-        printf("%d ", array[i]);
+    // Print the shuffled puzzle
+    for (int i = 0; i < PUZZLE_SIZE; i++) {
+        printf("%d ", shuffled_puzzle[i]);
     }
     printf("\n");
 
-    free(array);  // Free allocated memory
+    free(shuffled_puzzle);  // Free allocated memory
 
     return 0;
 }
