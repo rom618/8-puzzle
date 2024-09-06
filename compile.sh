@@ -4,7 +4,7 @@
 rm -f 8_puzzle
 
 # Compile C file
-gcc -o 8_puzzle main.c random_sequence.c
+gcc -o 8_puzzle *.c
 
 # Verify compilation success
 if [ $? -eq 0 ]; then

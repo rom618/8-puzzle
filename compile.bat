@@ -4,7 +4,7 @@
 del 8_puzzle.exe
 
 @REM Compile C file
-gcc -o 8_puzzle main.c random_sequence.c
+gcc -o 8_puzzle *.c
 
 @REM Verify compilation success
 if %ERRORLEVEL% EQU 0 (
