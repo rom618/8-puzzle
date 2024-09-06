@@ -6,8 +6,6 @@
 #include "node.h"
 #include "random_sequence.h"
 
-// This should be enough to trigger the GitHub action
-
 int main(int argc, char *argv[]) {
     srand(time(NULL));  // Seed the random number generator
 
