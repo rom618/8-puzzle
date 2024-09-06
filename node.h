@@ -1,3 +1,4 @@
+// Copyright [2024] <Roms & Vianpyro>
 #ifndef NODE_H_
 #define NODE_H_
 

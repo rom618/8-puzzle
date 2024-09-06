@@ -1,3 +1,4 @@
+// Copyright [2024] <Roms & Vianpyro>
 #ifndef RANDOM_SEQUENCE_H_
 #define RANDOM_SEQUENCE_H_
 
