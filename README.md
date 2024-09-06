@@ -46,16 +46,12 @@ Or use the appropriate script for [Windows](compile.bat) or [Linux](compile.sh).
 
 The brute force method explores all possible moves from a given configuration to find a solution. This approach is straightforward but may not be efficient for puzzles that are far from the solution.
 
-### Features
-
 - Exhaustive search of all possible configurations
 - Guaranteed to find a solution (if one exists)
 
 ## Heuristic Approach
 
 The heuristic approach uses intelligent algorithms, such as A* (A-star) search, combined with heuristics like the Manhattan Distance or Misplaced Tiles to solve the puzzle more efficiently.
-
-### Features
 
 - Optimized search using heuristics
 - Faster solution finding for complex puzzles
