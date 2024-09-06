@@ -27,19 +27,19 @@ void legal_moves(node *n) {
         n->moves[1] = DOWN;
     }
     // If blank is not in the rightmost column, "right" is a valid move
-    if (n->blank_index % 3 < 2) {
+    if (n->blank_index % PUZZLE_SIZE < 2) {
         n->moves[2] = RIGHT;
     }
     // If blank is not in the leftmost column, "left" is a valid move
-    if (n->blank_index % 3 > 0) {
-        n->moves[3] = LEFT;
+    if (n->blank_index % PUZZLE_SIZE > 0) {
+        n->moves[PUZZLE_SIZE] = LEFT;
     }
 }
 
 void print_node_state(node *n) {
     // Print the node puzzle state
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < PUZZLE_SIZE; i++) {
+        for (int j = 0; j < PUZZLE_SIZE; j++) {
             printf("%d ", n->state[i][j]);
         }
         printf("\n");

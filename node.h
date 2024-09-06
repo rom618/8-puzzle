@@ -5,12 +5,17 @@
 
 #include "direction.h"
 
+// Define constants for the puzzle dimensions
+#define PUZZLE_SIZE 3
+#define PUZZLE_DIMENSION (PUZZLE_SIZE * PUZZLE_SIZE)
+
 // Define the node structure
 typedef struct node {
-    const int state[3][3];  // 2D array to represent the puzzle state
-    int blank_index;        // Index of the blank (zero) tile
-    Direction moves[4];     // Array to store possible moves
-    struct node *parent;    // Pointer to the parent node
+    // 2D array to represent the puzzle state
+    const int state[PUZZLE_SIZE][PUZZLE_SIZE];
+    int blank_index;      // Index of the blank (zero) tile
+    Direction moves[4];   // Array to store possible moves
+    struct node *parent;  // Pointer to the parent node
 } node;
 
 // Function prototypes

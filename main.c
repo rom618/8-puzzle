@@ -6,16 +6,16 @@
 #include "node.h"
 #include "random_sequence.h"
 
-#define PUZZLE_SIZE 9
-#define PUZZLE_WIDTH 3
-#define PUZZLE_HEIGHT 3
+// Define constants for the puzzle dimensions
+#define PUZZLE_SIZE 3
+#define PUZZLE_DIMENSION (PUZZLE_SIZE * PUZZLE_SIZE)
 
 int locate_blank_index(const int puzzle[3][3]);
 
 int main(int argc, char *argv[]) {
     srand(time(NULL));  // Seed the random number generator
 
-    const int goal_state[PUZZLE_HEIGHT][PUZZLE_WIDTH] = {
+    const int goal_state[PUZZLE_SIZE][PUZZLE_SIZE] = {
         {1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
 
     // Default settings
@@ -70,10 +70,10 @@ int main(int argc, char *argv[]) {
 }
 
 int locate_blank_index(const int puzzle[3][3]) {
-    for (int i = 0; i < PUZZLE_HEIGHT; i++) {
-        for (int j = 0; j < PUZZLE_WIDTH; j++) {
+    for (int i = 0; i < PUZZLE_SIZE; i++) {
+        for (int j = 0; j < PUZZLE_SIZE; j++) {
             if (puzzle[i][j] == 0) {
-                return i * PUZZLE_HEIGHT + j;
+                return i * PUZZLE_SIZE + j;
             }
         }
     }
