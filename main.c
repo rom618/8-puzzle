@@ -54,12 +54,12 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    int *shuffled_puzzle = malloc(PUZZLE_SIZE * sizeof(int));
+    int *shuffled_puzzle = malloc(PUZZLE_DIMENSION * sizeof(int));
 
-    random_number_sequence(shuffled_puzzle, PUZZLE_SIZE);  // Usage example
+    random_number_sequence(shuffled_puzzle, PUZZLE_DIMENSION);  // Usage example
 
     // Print the shuffled puzzle
-    for (int i = 0; i < PUZZLE_SIZE; i++) {
+    for (int i = 0; i < PUZZLE_DIMENSION; i++) {
         printf("%d ", shuffled_puzzle[i]);
     }
     printf("\n");
