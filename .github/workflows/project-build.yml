@@ -2,9 +2,6 @@ name: Compilation with CMake et GCC
 
 on:
   push: null
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-cmake:
