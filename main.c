@@ -5,34 +5,41 @@
 
 #include "random_sequence.h"
 
-// Define the node structure
+// Define the directions for the puzzle
+typedef enum {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+    NONE  // Used to indicate no move
+} Direction;
+
 typedef struct node {
     int state[3][3];      // 2D array to represent the puzzle state
     int blank_index;      // Index of the blank (zero) tile
-    char moves[4][10];    // Array to store possible moves ("up", "down", "right", "left")
+    Direction moves[4];   // Array to store possible moves
     struct node *parent;  // Pointer to the parent node
 } node;
 
 // Function to determine legal moves based on the position of the blank tile
 void legal_moves(node *n) {
-    // Initialize moves to empty strings
-    strcpy(n->moves[0], "");
-    strcpy(n->moves[1], "");
-    strcpy(n->moves[2], "");
-    strcpy(n->moves[3], "");
+    // Initialize moves to NONE
+    for (int i = 0; i < 4; i++) {
+        n->moves[i] = NONE;
+    }
 
     // Determine legal moves
     if (n->blank_index > 2) {  // If blank is not in the top row, "up" is a valid move
-        strcpy(n->moves[0], "up");
+        n->moves[0] = UP;
     }
     if (n->blank_index < 6) {  // If blank is not in the bottom row, "down" is a valid move
-        strcpy(n->moves[1], "down");
+        n->moves[1] = DOWN;
     }
     if (n->blank_index % 3 < 2) {  // If blank is not in the rightmost column, "right" is a valid move
-        strcpy(n->moves[2], "right");
+        n->moves[2] = RIGHT;
     }
     if (n->blank_index % 3 > 0) {  // If blank is not in the leftmost column, "left" is a valid move
-        strcpy(n->moves[3], "left");
+        n->moves[3] = LEFT;
     }
 }
 
