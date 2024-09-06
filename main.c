@@ -7,11 +7,16 @@
 #include "random_sequence.h"
 
 #define PUZZLE_SIZE 9
+#define PUZZLE_WIDTH 3
+#define PUZZLE_HEIGHT 3
+
+int locate_blank_index(const int puzzle[3][3]);
 
 int main(int argc, char *argv[]) {
     srand(time(NULL));  // Seed the random number generator
 
-    const int goal_state[3][3] = {{1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
+    const int goal_state[PUZZLE_HEIGHT][PUZZLE_WIDTH] = {
+        {1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
 
     // Default settings
     char *mode = "bruteforce";      // Default mode
@@ -37,6 +42,7 @@ int main(int argc, char *argv[]) {
 
     // Example of initializing a node
     node root = {{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}}, 4, {}, NULL};
+    print_node_state(&root);
 
     // Determine legal moves for the initial state
     legal_moves(&root);
@@ -61,4 +67,15 @@ int main(int argc, char *argv[]) {
     free(shuffled_puzzle);  // Free allocated memory
 
     return 0;
+}
+
+int locate_blank_index(const int puzzle[3][3]) {
+    for (int i = 0; i < PUZZLE_HEIGHT; i++) {
+        for (int j = 0; j < PUZZLE_WIDTH; j++) {
+            if (puzzle[i][j] == 0) {
+                return i * PUZZLE_HEIGHT + j;
+            }
+        }
+    }
+    return -1;  // Blank not found
 }

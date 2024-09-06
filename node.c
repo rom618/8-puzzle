@@ -1,5 +1,15 @@
 #include "node.h"
 
+// Function to perform an action based on the direction
+void action(node *n, const char *direction) {
+    // Implement the action function here
+}
+
+// Function to expand the node to generate its children
+void expand(node *n) {
+    // Implement the expand function here
+}
+
 // Function to determine legal moves based on the position of the blank tile
 void legal_moves(node *n) {
     // Initialize moves to NONE
@@ -26,12 +36,12 @@ void legal_moves(node *n) {
     }
 }
 
-// Function to perform an action based on the direction
-void action(node *n, const char *direction) {
-    // Implement the action function here
-}
-
-// Function to expand the node to generate its children
-void expand(node *n) {
-    // Implement the expand function here
+void print_node_state(node *n) {
+    // Print the node puzzle state
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", n->state[i][j]);
+        }
+        printf("\n");
+    }
 }

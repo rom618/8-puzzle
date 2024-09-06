@@ -1,6 +1,8 @@
 #ifndef NODE_H_
 #define NODE_H_
 
+#include <stdio.h>
+
 #include "direction.h"
 
 // Define the node structure
@@ -12,8 +14,9 @@ typedef struct node {
 } node;
 
 // Function prototypes
-void legal_moves(node *n);
 void action(node *n, const char *direction);
 void expand(node *n);
+void legal_moves(node *n);
+void print_node_state(node *n);
 
 #endif  // NODE_H_
