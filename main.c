@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
     // Default settings
     char *mode = "bruteforce";      // Default mode
-    char *heuristic = "manhattan";  // Default heuristic (only applicable in heuristic mode)
+    char *heuristic = "manhattan";  // Default heuristic
 
     // Parse command-line arguments
     for (int i = 1; i < argc; i++) {
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     int sequence_size = 9;
     int *array = (int *)malloc(sequence_size * sizeof(int));
 
-    random_number_sequence(array, sequence_size);  // Random number sequence usage example
+    random_number_sequence(array, sequence_size);  // Usage example
 
     // Print the shuffled array
     for (int i = 0; i < sequence_size; i++) {

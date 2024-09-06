@@ -8,16 +8,20 @@ void legal_moves(node *n) {
     }
 
     // Determine legal moves
-    if (n->blank_index > 2) {  // If blank is not in the top row, "up" is a valid move
+    // If blank is not in the top row, "up" is a valid move
+    if (n->blank_index > 2) {
         n->moves[0] = UP;
     }
-    if (n->blank_index < 6) {  // If blank is not in the bottom row, "down" is a valid move
+    // If blank is not in the bottom row, "down" is a valid move
+    if (n->blank_index < 6) {
         n->moves[1] = DOWN;
     }
-    if (n->blank_index % 3 < 2) {  // If blank is not in the rightmost column, "right" is a valid move
+    // If blank is not in the rightmost column, "right" is a valid move
+    if (n->blank_index % 3 < 2) {
         n->moves[2] = RIGHT;
     }
-    if (n->blank_index % 3 > 0) {  // If blank is not in the leftmost column, "left" is a valid move
+    // If blank is not in the leftmost column, "left" is a valid move
+    if (n->blank_index % 3 > 0) {
         n->moves[3] = LEFT;
     }
 }
