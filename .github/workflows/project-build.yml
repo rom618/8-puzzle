@@ -37,4 +37,4 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y gcc
 
     - name: Compile project with GCC
-      run: gcc -o main
+      run: gcc -o 8_puzzle *.c
