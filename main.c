@@ -6,8 +6,30 @@
 #include "node.h"
 #include "random_sequence.h"
 
-int main() {
+int main(int argc, char *argv[]) {
     srand(time(NULL));  // Seed the random number generator
+
+    // Default settings
+    char *mode = "bruteforce";      // Default mode
+    char *heuristic = "manhattan";  // Default heuristic (only applicable in heuristic mode)
+
+    // Parse command-line arguments
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--mode") == 0 && i + 1 < argc) {
+            mode = argv[++i];  // Get the mode value
+        } else if (strcmp(argv[i], "--heuristic") == 0 && i + 1 < argc) {
+            heuristic = argv[++i];  // Get the heuristic value
+        } else {
+            printf("Unknown argument: %s\n", argv[i]);
+            return 1;  // Exit with error code
+        }
+    }
+
+    // Display the selected mode and heuristic
+    printf("Selected mode: %s\n", mode);
+    if (strcmp(mode, "heuristic") == 0) {
+        printf("Selected heuristic: %s\n", heuristic);
+    }
 
     int goal_state[3][3] = {{1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
 
