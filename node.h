@@ -20,7 +20,7 @@ typedef struct node {
 } node;
 
 // Function prototypes
-int action(int puzzle[PUZZLE_DIMENSION], const int blank_index, const Direction dir);
+void action(node *n, const Direction dir);
 void expand(node *n);
 void legal_moves(node *n);
 void swap(int *a, int *b);

@@ -1,8 +1,28 @@
 #include "node.h"
 
 // Function to perform an action based on the direction
-int action(int puzzle[PUZZLE_DIMENSION], const int blank_index, const Direction dir) {
-    // Implement the action function here
+void action(node *n, const Direction dir) {
+    // Change the blank tile position based on the direction
+    switch (dir) {
+        case UP:
+            swap(&n->state[n->blank_index], &n->state[n->blank_index - PUZZLE_SIZE]);
+            n->blank_index -= PUZZLE_SIZE;
+            break;
+        case DOWN:
+            swap(&n->state[n->blank_index], &n->state[n->blank_index + PUZZLE_SIZE]);
+            n->blank_index += PUZZLE_SIZE;
+            break;
+        case LEFT:
+            swap(&n->state[n->blank_index], &n->state[n->blank_index - 1]);
+            n->blank_index -= 1;
+            break;
+        case RIGHT:
+            swap(&n->state[n->blank_index], &n->state[n->blank_index + 1]);
+            n->blank_index += 1;
+            break;
+        default:
+            break;
+    }
 }
 
 // Function to expand the node to generate its children
@@ -34,4 +54,10 @@ void legal_moves(node *n) {
     if (n->blank_index % PUZZLE_SIZE > 0) {
         n->moves[PUZZLE_SIZE] = LEFT;
     }
+}
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }

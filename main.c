@@ -4,6 +4,7 @@
 #include "node.h"
 #include "random_sequence.h"
 
+void print_legal_moves(const Direction moves[4]);
 void print_puzzle(const int puzzle[PUZZLE_DIMENSION]);
 int locate_blank_index(const int puzzle[PUZZLE_DIMENSION]);
 
@@ -52,15 +53,23 @@ int main(int argc, char *argv[]) {
     // Print the initial state and legal moves
     print_puzzle(root.state);
     legal_moves(&root);
+    print_legal_moves(root.moves);
 
-    // Print the legal moves
-    for (int i = 0; i < 4; i++) {
-        if (root.moves[i] != NONE) {
-            printf("Can move: %s\n", direction_to_string(root.moves[i]));
-        }
-    }
+    action(&root, UP);
+
+    print_puzzle(root.state);
+    legal_moves(&root);
+    print_legal_moves(root.moves);
 
     return 0;
+}
+
+void print_legal_moves(const Direction moves[4]) {
+    for (int i = 0; i < 4; i++) {
+        if (moves[i] != NONE) {
+            printf("Can move: %s\n", direction_to_string(moves[i]));
+        }
+    }
 }
 
 void print_puzzle(const int puzzle[PUZZLE_DIMENSION]) {
