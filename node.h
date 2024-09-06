@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "direction.h"
 
@@ -23,6 +24,8 @@ typedef struct node {
 void action(node *n, const Direction dir);
 void expand(node *n);
 void legal_moves(node *n);
+void print_legal_moves(const Direction moves[4]);
+void print_state(node *n);
 void swap(int *a, int *b);
 
 #endif  // NODE_H_

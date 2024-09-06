@@ -27,7 +27,22 @@ void action(node *n, const Direction dir) {
 
 // Function to expand the node to generate its children
 void expand(node *n) {
-    // Implement the expand function here
+    // Generate children nodes based on legal moves
+    legal_moves(n);
+    print_legal_moves(n->moves);
+
+    // Create child nodes for each valid move
+    for (int i = 0; i < 4; i++) {
+        if (n->moves[i] != NONE) {
+            node *child = (node *)malloc(sizeof(node));
+            memcpy(child->state, n->state, sizeof(n->state));
+            child->blank_index = n->blank_index;
+            child->parent = n;
+            action(child, n->moves[i]);
+            printf("Child state after %s:\n", direction_to_string(n->moves[i]));
+            print_state(child);
+        }
+    }
 }
 
 // Function to determine legal moves based on the position of the blank tile
@@ -53,6 +68,22 @@ void legal_moves(node *n) {
     // If blank is not in the leftmost column, "left" is a valid move
     if (n->blank_index % PUZZLE_SIZE > 0) {
         n->moves[PUZZLE_SIZE] = LEFT;
+    }
+}
+
+void print_legal_moves(const Direction moves[4]) {
+    for (int i = 0; i < 4; i++) {
+        if (moves[i] != NONE) {
+            printf("Can move: %s\n", direction_to_string(moves[i]));
+        }
+    }
+}
+
+void print_state(node *n) {
+    for (int i = 0; i < PUZZLE_DIMENSION; i++) {
+        printf("%d ", n->state[i]);
+
+        if (i % 3 == 2) printf("\n");
     }
 }
 
