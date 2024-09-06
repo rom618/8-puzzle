@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int main() {
     int goal_state[3][3] = {{1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
 }
@@ -8,10 +9,9 @@ typedef struct node {
     int blank_index = NULL;
     char *moves[4] = NULL;
     struct node *parent;
-}
+};
 
-node
-legal_moves(node node) {
+node legal_moves(node node) {
     if (node.blank_index < 2) {
         node.moves[0] = 'up';
     }
