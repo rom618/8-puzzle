@@ -1,4 +1,4 @@
-name: Compilation with CMake et GCC
+name: Compilation with CMake and GCC
 
 on:
   push: null
