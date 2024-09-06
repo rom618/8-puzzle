@@ -4,7 +4,7 @@
     },
     "[c]": {
         "editor.rulers": [
-            80
+            100
         ]
     },
     "editor.tabSize": 4,

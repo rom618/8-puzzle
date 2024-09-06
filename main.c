@@ -1,14 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 
 #include "node.h"
 #include "random_sequence.h"
 
-int locate_blank_index(const int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]);
-void list_to_puzzle(const int *shuffled_list,
-                    int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]);
+void print_puzzle(const int puzzle[PUZZLE_DIMENSION]);
+int locate_blank_index(const int puzzle[PUZZLE_DIMENSION]);
 
 int main(int argc, char *argv[]) {
     // - * - * - * - * - * -* - * - * - * - * -* - * - * - * - * -* - * - * - *
@@ -41,54 +38,43 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL));  // Seed the random number generator
 
-    const int goal_state[PUZZLE_SIZE][PUZZLE_SIZE] = {
-        {1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
+    const int goal_state[PUZZLE_DIMENSION] = {1, 2, 3, 8, 0, 4, 7, 6, 5};
 
     // Generate a random puzzle
-    int *shuffled_puzzle = malloc(PUZZLE_DIMENSION * sizeof(int));
-    random_number_sequence(shuffled_puzzle, PUZZLE_DIMENSION);
-
-    // Convert the list to a 2D array
-    int initial_puzzle[PUZZLE_SIZE][PUZZLE_SIZE];
-    list_to_puzzle(shuffled_puzzle, initial_puzzle);
-
-    // Free the allocated memory for the shuffled puzzle
-    free(shuffled_puzzle);
+    int initial_puzzle[PUZZLE_DIMENSION];
+    random_number_sequence(initial_puzzle, PUZZLE_DIMENSION);
 
     // Initialize root node
     int blank_index = locate_blank_index(initial_puzzle);
-    node root = {{{0}}, blank_index, {}, NULL};
+    node root = {{0}, blank_index, {}, NULL};
     memcpy(root.state, initial_puzzle, sizeof(initial_puzzle));
 
     // Print the initial state and legal moves
-    print_node_state(&root);
+    print_puzzle(root.state);
     legal_moves(&root);
 
     // Print the legal moves
     for (int i = 0; i < 4; i++) {
         if (root.moves[i] != NONE) {
-            printf("Move %d: %s\n", i, direction_to_string(root.moves[i]));
+            printf("Can move: %s\n", direction_to_string(root.moves[i]));
         }
     }
 
     return 0;
 }
 
-void list_to_puzzle(const int *shuffled_list,
-                    int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]) {
-    for (int i = 0; i < PUZZLE_SIZE; i++) {
-        for (int j = 0; j < PUZZLE_SIZE; j++) {
-            puzzle[i][j] = shuffled_list[i * PUZZLE_SIZE + j];
-        }
+void print_puzzle(const int puzzle[PUZZLE_DIMENSION]) {
+    for (int i = 0; i < PUZZLE_DIMENSION; i++) {
+        printf("%d ", puzzle[i]);
+
+        if (i % 3 == 2) printf("\n");
     }
 }
 
-int locate_blank_index(const int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]) {
-    for (int i = 0; i < PUZZLE_SIZE; i++) {
-        for (int j = 0; j < PUZZLE_SIZE; j++) {
-            if (puzzle[i][j] == 0) {
-                return i * PUZZLE_SIZE + j;
-            }
+int locate_blank_index(const int puzzle[PUZZLE_DIMENSION]) {
+    for (int i = 0; i < PUZZLE_DIMENSION; i++) {
+        if (puzzle[i] == 0) {
+            return i;
         }
     }
     return -1;  // Blank not found

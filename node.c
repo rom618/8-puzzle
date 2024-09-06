@@ -1,7 +1,7 @@
 #include "node.h"
 
 // Function to perform an action based on the direction
-void action(node *n, const char *direction) {
+int action(int puzzle[PUZZLE_DIMENSION], const int blank_index, const Direction dir) {
     // Implement the action function here
 }
 
@@ -33,15 +33,5 @@ void legal_moves(node *n) {
     // If blank is not in the leftmost column, "left" is a valid move
     if (n->blank_index % PUZZLE_SIZE > 0) {
         n->moves[PUZZLE_SIZE] = LEFT;
-    }
-}
-
-void print_node_state(node *n) {
-    // Print the node puzzle state
-    for (int i = 0; i < PUZZLE_SIZE; i++) {
-        for (int j = 0; j < PUZZLE_SIZE; j++) {
-            printf("%d ", n->state[i][j]);
-        }
-        printf("\n");
     }
 }
