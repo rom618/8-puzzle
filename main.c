@@ -6,7 +6,7 @@
 #include "node.h"
 #include "random_sequence.h"
 
-int locate_blank_index(const int puzzle[3][3]);
+int locate_blank_index(const int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]);
 
 int main(int argc, char *argv[]) {
     srand(time(NULL));  // Seed the random number generator
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-int locate_blank_index(const int puzzle[3][3]) {
+int locate_blank_index(const int puzzle[PUZZLE_SIZE][PUZZLE_SIZE]) {
     for (int i = 0; i < PUZZLE_SIZE; i++) {
         for (int j = 0; j < PUZZLE_SIZE; j++) {
             if (puzzle[i][j] == 0) {
