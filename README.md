@@ -1,6 +1,7 @@
 # 8-Puzzle Solver
 
 This project is an implementation of an 8-puzzle solver in C. It offers two different approaches to solve random 8-puzzle configurations:
+
 1. **Brute Force Approach**: A simple, exhaustive method that explores all possible moves until the solution is found.
 2. **Heuristic Approach**: An optimized method that utilizes heuristics to solve the puzzle more efficiently.
 
@@ -23,6 +24,7 @@ The 8-puzzle is a classic problem in computer science and artificial intelligenc
 ### Prerequisites
 
 To compile and run this project, you need:
+
 - A C compiler (e.g., `gcc`)
 
 ### Installation
@@ -51,7 +53,7 @@ The brute force method explores all possible moves from a given configuration to
 
 ## Heuristic Approach
 
-The heuristic approach uses intelligent algorithms, such as A* (A-star) search, combined with heuristics like the Manhattan Distance or Misplaced Tiles to solve the puzzle more efficiently.
+The heuristic approach uses intelligent algorithms, such as A\* (A-star) search, combined with heuristics like the Manhattan Distance or Misplaced Tiles to solve the puzzle more efficiently.
 
 - Optimized search using heuristics
 - Faster solution finding for complex puzzles
@@ -72,6 +74,7 @@ To solve a random 8-puzzle using heuristics:
 ```
 
 Available heuristics:
+
 - `manhattan`: Uses the Manhattan Distance heuristic.
 - `misplaced`: Uses the Misplaced Tiles heuristic.
 
