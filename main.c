@@ -11,6 +11,8 @@
 int main(int argc, char *argv[]) {
     srand(time(NULL));  // Seed the random number generator
 
+    const int goal_state[3][3] = {{1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
+
     // Default settings
     char *mode = "bruteforce";      // Default mode
     char *heuristic = "manhattan";  // Default heuristic
@@ -32,8 +34,6 @@ int main(int argc, char *argv[]) {
     if (strcmp(mode, "heuristic") == 0) {
         printf("Selected heuristic: %s\n", heuristic);
     }
-
-    int goal_state[3][3] = {{1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
 
     // Example of initializing a node
     node root = {{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}}, 4, {}, NULL};
