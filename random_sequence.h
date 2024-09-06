@@ -2,9 +2,9 @@
 #define RANDOM_SEQUENCE_H
 
 // Fonction to shuffle an array
-void shuffle(int *array, int length);
+void shuffle(int* array, int length);
 
 // Fonction to generate a random number sequence
-void random_number_sequence(int length);
+void random_number_sequence(int* array, int length);
 
 #endif  // RANDOM_SEQUENCE_H

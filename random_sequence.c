@@ -15,20 +15,12 @@ void shuffle(int *array, int length) {
 }
 
 // Function to generate a random number sequence
-void random_number_sequence(int length) {
-    int digits[length];
-
+void random_number_sequence(int *array, int length) {
     // Initialize the array with values from 0 to length-1
     for (int i = 0; i < length; i++) {
-        digits[i] = i;
+        array[i] = i;
     }
 
     // Shuffle the array
-    shuffle(digits, length);
-
-    // Print the shuffled array
-    for (int i = 0; i < length; i++) {
-        printf("%d ", digits[i]);
-    }
-    printf("\n");
+    shuffle(array, length);
 }
