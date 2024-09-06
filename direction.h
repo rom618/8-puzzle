@@ -1,4 +1,3 @@
-// Copyright [2024] <Roms & Vianpyro>
 #ifndef DIRECTION_H_
 #define DIRECTION_H_
 

@@ -1,4 +1,3 @@
-// Copyright [2024] <Roms & Vianpyro>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

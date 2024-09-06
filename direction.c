@@ -1,4 +1,3 @@
-// Copyright [2024] <Roms & Vianpyro>
 #include "direction.h"
 
 const char *direction_to_string(Direction dir) {
