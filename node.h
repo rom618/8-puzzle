@@ -1,5 +1,5 @@
-#ifndef NODE_H
-#define NODE_H
+#ifndef NODE_H_
+#define NODE_H_
 
 #include "direction.h"
 
@@ -16,4 +16,4 @@ typedef struct Node {
 
 const char* direction_to_string(Direction dir);
 
-#endif  // NODE_H
+#endif  // NODE_H_

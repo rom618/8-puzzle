@@ -1,5 +1,5 @@
-#ifndef PRIORITY_QUEUE_H
-#define PRIORITY_QUEUE_H
+#ifndef PRIORITY_QUEUE_H_
+#define PRIORITY_QUEUE_H_
 
 #include "node.h"
 
@@ -18,4 +18,4 @@ void heapify_up(PriorityQueue *pq, int index);
 void heapify_down(PriorityQueue *pq, int index);
 int compare_nodes(const Node *a, const Node *b);
 
-#endif  // PRIORITY_QUEUE_H
+#endif  // PRIORITY_QUEUE_H_

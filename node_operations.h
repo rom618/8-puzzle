@@ -1,5 +1,5 @@
-#ifndef NODE_OPERATIONS_H
-#define NODE_OPERATIONS_H
+#ifndef NODE_OPERATIONS_H_
+#define NODE_OPERATIONS_H_
 
 #include "heuristic.h"
 #include "priority_queue.h"
@@ -11,4 +11,4 @@ void print_legal_moves(const Direction moves[4]);
 void print_state(Node *n);
 void swap(int *a, int *b);
 
-#endif  // NODE_OPERATIONS_H
+#endif  // NODE_OPERATIONS_H_
