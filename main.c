@@ -3,7 +3,6 @@
 #include <string.h>
 #include <time.h>
 
-#include "heuristic.h"
 #include "node_operations.h"
 #include "random_sequence.h"
 
