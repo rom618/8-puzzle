@@ -35,8 +35,6 @@ int main(int argc, char *argv[]) {
     // Puzzle initialization
     srand(time(NULL));  // Seed the random number generator
 
-    const int goal_state[PUZZLE_DIMENSION] = {1, 2, 3, 8, 0, 4, 7, 6, 5};
-
     // Generate a random puzzle
     int initial_puzzle[PUZZLE_DIMENSION];
     random_number_sequence(initial_puzzle, PUZZLE_DIMENSION);
