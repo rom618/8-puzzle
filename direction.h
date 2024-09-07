@@ -2,7 +2,7 @@
 #define DIRECTION_H_
 
 // Define the directions for the puzzle
-typedef enum {
+typedef enum Direction {
     UP,
     DOWN,
     LEFT,

@@ -1,6 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-#include "node.h"
+#include "heuristic.h"
+#include "node_operations.h"
+#include "priority_queue.h"
 #include "random_sequence.h"
 
 // Function prototype for locating the blank tile index
@@ -40,7 +45,7 @@ int main(int argc, char *argv[]) {
 
     // Initialize root node
     int blank_index = locate_blank_index(initial_puzzle);
-    node root = {{0}, blank_index, {}, NULL};
+    Node root = {{0}, blank_index, 0, NULL};
     memcpy(root.state, initial_puzzle, sizeof(initial_puzzle));
     root.cost = 0;  // Initial cost for the root node
 
@@ -59,7 +64,7 @@ int main(int argc, char *argv[]) {
         }
 
         // Remove the node with the highest priority (lowest cost)
-        node *current = remove_with_priority(&pq);
+        Node *current = remove_with_priority(&pq);
         printf("Expanding node with cost: %d\n", current->cost);
         print_state(current);
 
