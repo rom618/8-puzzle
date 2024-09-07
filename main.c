@@ -3,12 +3,11 @@
 #include "node.h"
 #include "random_sequence.h"
 
+// Function prototype for locating the blank tile index
 int locate_blank_index(const int puzzle[PUZZLE_DIMENSION]);
 
 int main(int argc, char *argv[]) {
-    // - * - * - * - * - * -* - * - * - * - * -* - * - * - * - * -* - * - * - *
     // Command-line arguments
-    // - * - * - * - * - * -* - * - * - * - * -* - * - * - * - * -* - * - * - *
     char *mode = "bruteforce";      // Default mode
     char *heuristic = "manhattan";  // Default heuristic
 
@@ -30,10 +29,7 @@ int main(int argc, char *argv[]) {
         printf("Selected heuristic: %s\n", heuristic);
     }
 
-    // - * - * - * - * - * -* - * - * - * - * -* - * - * - * - * -* - * - * - *
     // Puzzle initialization
-    // - * - * - * - * - * -* - * - * - * - * -* - * - * - * - * -* - * - * - *
-
     srand(time(NULL));  // Seed the random number generator
 
     const int goal_state[PUZZLE_DIMENSION] = {1, 2, 3, 8, 0, 4, 7, 6, 5};
@@ -46,10 +42,31 @@ int main(int argc, char *argv[]) {
     int blank_index = locate_blank_index(initial_puzzle);
     node root = {{0}, blank_index, {}, NULL};
     memcpy(root.state, initial_puzzle, sizeof(initial_puzzle));
+    root.cost = 0;  // Initial cost for the root node
 
-    // Print the initial state and legal moves
-    print_state(&root);
-    expand(&root);
+    // Create a priority queue for the nodes
+    PriorityQueue pq;
+    pq.size = 0;  // Initialize the size of the priority queue to 0
+
+    // Insert the root node into the priority queue
+    insert_with_priority(&pq, &root);
+
+    // Expand nodes
+    for (int iteration = 0; iteration < 10; iteration++) {
+        if (pq.size == 0) {
+            printf("No more nodes to expand.\n");
+            break;
+        }
+
+        // Remove the node with the highest priority (lowest cost)
+        node *current = remove_with_priority(&pq);
+        printf("Expanding node with cost: %d\n", current->cost);
+        print_state(current);
+
+        // Expand the current node and add its children to the priority queue
+        expand(current, &pq, heuristic);
+    }
+
     return 0;
 }
 
