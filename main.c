@@ -5,7 +5,6 @@
 
 #include "heuristic.h"
 #include "node_operations.h"
-#include "priority_queue.h"
 #include "random_sequence.h"
 
 // Function prototype for locating the blank tile index
@@ -57,7 +56,7 @@ int main(int argc, char *argv[]) {
     insert_with_priority(&pq, &root);
 
     // Expand nodes
-    for (int iteration = 0; iteration < 10; iteration++) {
+    for (int iteration = 0; iteration < 3; iteration++) {
         if (pq.size == 0) {
             printf("No more nodes to expand.\n");
             break;

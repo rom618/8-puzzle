@@ -2,7 +2,6 @@
 #define NODE_OPERATIONS_H
 
 #include "heuristic.h"
-#include "node.h"
 #include "priority_queue.h"
 
 void action(Node *n, const Direction dir);
