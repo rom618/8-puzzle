@@ -28,6 +28,15 @@ int calculate_misplaced_tiles(const int state[PUZZLE_DIMENSION]) {
     return misplaced;
 }
 
+node *remove_min(PriorityQueue *pq) {
+    if (pq->size == 0) return NULL;
+    node *min_node = pq->nodes[0];
+    pq->nodes[0] = pq->nodes[pq->size - 1];
+    pq->size--;
+    heapify_down(pq, 0);
+    return min_node;
+}
+
 node *remove_with_priority(PriorityQueue *pq) {
     if (pq->size == 0) {
         printf("Priority queue is empty.\n");
@@ -115,6 +124,48 @@ void expand(node *n, PriorityQueue *pq, const char *heuristic) {
     }
 }
 
+void heapify_up(PriorityQueue *pq, int index) {
+    if (index == 0) return;
+    int parent = (index - 1) / 2;
+    if (compare_nodes(pq->nodes[index], pq->nodes[parent]) < 0) {
+        node *temp = pq->nodes[index];
+        pq->nodes[index] = pq->nodes[parent];
+        pq->nodes[parent] = temp;
+        heapify_up(pq, parent);
+    }
+}
+
+void heapify_down(PriorityQueue *pq, int index) {
+    int left_child = 2 * index + 1;
+    int right_child = 2 * index + 2;
+    int smallest = index;
+
+    if (left_child < pq->size && compare_nodes(pq->nodes[left_child], pq->nodes[smallest]) < 0) {
+        smallest = left_child;
+    }
+    if (right_child < pq->size && compare_nodes(pq->nodes[right_child], pq->nodes[smallest]) < 0) {
+        smallest = right_child;
+    }
+
+    if (smallest != index) {
+        node *temp = pq->nodes[index];
+        pq->nodes[index] = pq->nodes[smallest];
+        pq->nodes[smallest] = temp;
+        heapify_down(pq, smallest);
+    }
+}
+
+// Priority Queue Functions
+void insert_with_priority(PriorityQueue *pq, node *new_node) {
+    if (pq->size >= MAX_QUEUE_SIZE) {
+        printf("Priority queue is full!\n");
+        return;
+    }
+    pq->nodes[pq->size] = new_node;
+    heapify_up(pq, pq->size);
+    pq->size++;
+}
+
 // Function to determine legal moves based on the position of the blank tile
 void legal_moves(node *n) {
     // Initialize moves to NONE
@@ -161,57 +212,6 @@ void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
-}
-
-// Priority Queue Functions
-void insert_with_priority(PriorityQueue *pq, node *new_node) {
-    if (pq->size >= MAX_QUEUE_SIZE) {
-        printf("Priority queue is full!\n");
-        return;
-    }
-    pq->nodes[pq->size] = new_node;
-    heapify_up(pq, pq->size);
-    pq->size++;
-}
-
-node *remove_min(PriorityQueue *pq) {
-    if (pq->size == 0) return NULL;
-    node *min_node = pq->nodes[0];
-    pq->nodes[0] = pq->nodes[pq->size - 1];
-    pq->size--;
-    heapify_down(pq, 0);
-    return min_node;
-}
-
-void heapify_up(PriorityQueue *pq, int index) {
-    if (index == 0) return;
-    int parent = (index - 1) / 2;
-    if (compare_nodes(pq->nodes[index], pq->nodes[parent]) < 0) {
-        node *temp = pq->nodes[index];
-        pq->nodes[index] = pq->nodes[parent];
-        pq->nodes[parent] = temp;
-        heapify_up(pq, parent);
-    }
-}
-
-void heapify_down(PriorityQueue *pq, int index) {
-    int left_child = 2 * index + 1;
-    int right_child = 2 * index + 2;
-    int smallest = index;
-
-    if (left_child < pq->size && compare_nodes(pq->nodes[left_child], pq->nodes[smallest]) < 0) {
-        smallest = left_child;
-    }
-    if (right_child < pq->size && compare_nodes(pq->nodes[right_child], pq->nodes[smallest]) < 0) {
-        smallest = right_child;
-    }
-
-    if (smallest != index) {
-        node *temp = pq->nodes[index];
-        pq->nodes[index] = pq->nodes[smallest];
-        pq->nodes[smallest] = temp;
-        heapify_down(pq, smallest);
-    }
 }
 
 int compare_nodes(const node *a, const node *b) {

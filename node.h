@@ -29,6 +29,8 @@ typedef struct {
 } PriorityQueue;
 
 // Function prototypes
+int calculate_manhattan_distance(const int state[PUZZLE_DIMENSION]);
+int calculate_misplaced_tiles(const int state[PUZZLE_DIMENSION]);
 int compare_nodes(const node *a, const node *b);  // Comparison function for priority
 node *remove_min(PriorityQueue *pq);
 node *remove_with_priority(PriorityQueue *pq);
@@ -41,5 +43,6 @@ void legal_moves(node *n);
 void print_legal_moves(const Direction moves[4]);
 void print_state(node *n);
 void swap(int *a, int *b);
+int compare_nodes(const node *a, const node *b);
 
 #endif  // NODE_H_
