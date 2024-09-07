@@ -3,6 +3,9 @@ name: Compilation with CMake and GCC
 on:
   push: null
 
+permissions:
+  contents: read # Define read permissions as required by the job.
+
 jobs:
   build-cmake:
     runs-on: ubuntu-latest

@@ -4,16 +4,14 @@ name: Lint
 on: # yamllint disable-line rule:truthy
   push: null
 
+permissions:
+  contents: read # This is sufficient for read access.
+  statuses: write # This is needed to update status checks.
+
 jobs:
   build:
     name: Lint
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-      # To report GitHub Actions status checks
-      statuses: write
 
     steps:
       - name: Checkout code
